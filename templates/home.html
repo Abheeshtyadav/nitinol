@@ -19,6 +19,64 @@
         <h1 id="countdown" style="font-size: 3rem; color: #ff4757;">Loading countdown...</h1>
     </div>
 
+    <div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+            
+            {% if current_user %}
+                <!-- Logged In Dashboard State -->
+                <div class="card shadow-sm border border-secondary-subtle bg-body-tertiary p-4 p-md-5 rounded-4 text-center">
+                    <div class="card-body">
+                        <!-- Welcome Badge / Accent -->
+                        <span class="badge bg-primary-subtle text-primary fw-semibold px-3 py-2 rounded-pill mb-3 text-uppercase tracking-wider small">
+                            Welcome Back
+                        </span>
+                        
+                        <!-- Main Greeting -->
+                        <h1 class="display-5 fw-bold text-body mb-3">
+                            Hello, <span class="text-primary">{{ current_user.name }}</span>!
+                        </h1>
+                        
+                        <!-- Subtitle text -->
+                        <p class="text-secondary fs-5 mb-4 mx-auto style-desc" style="max-width: 500px;">
+                            Visit your personal workspace to manage your notes and track your preparation syllabus.
+                        </p>
+                        
+                        <!-- Call to Action Button -->
+                        <div class="d-grid d-sm-inline-block gap-2">
+                            <a href="/myspace" class="btn btn-primary btn-lg fw-semibold px-4 py-2 rounded-3 shadow-sm">
+                                <i class="bi bi-rocket-takeoff me-2"></i> Go to My Space
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            {% else %}
+                <!-- Logged Out / Welcome State -->
+                <div class="card shadow-sm border border-secondary-subtle bg-body-tertiary p-4 p-md-5 rounded-4 text-center">
+                    <div class="card-body py-4">
+                        <div class="mb-3 text-secondary">
+                            <i class="bi bi-shield-lock fs-1"></i>
+                        </div>
+                        <h2 class="fw-bold text-body mb-2">Login or Sign yp now</h2>
+                        <p class="text-secondary small mb-4">To track yourself</p>
+                        
+                        <div class="d-grid d-sm-inline-block gap-2">
+                            <a href="/login" class="btn btn-outline-primary fw-semibold px-4 py-2 rounded-3">
+                                Login
+                            </a>
+                            <a href="/reg" class="btn btn-outline-primary fw-semibold px-4 py-2 rounded-3">
+                                Sign up
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
 
 
     <script>

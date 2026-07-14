@@ -14,3 +14,4 @@ class users(db.Model):
     gender = db.Column("gender", db.String(100), nullable=True)
     about = db.Column("about", db.Text, nullable=True)
     phonen = db.Column("phonen", db.String(20), nullable=True)
+

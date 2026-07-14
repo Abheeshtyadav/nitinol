@@ -5,6 +5,7 @@ from database import db, users
 import random
 import ay_loginsys as ay
 from dotenv import load_dotenv
+from backend import quotes
 app = Flask(__name__, instance_path='/tmp/instance')
 load_dotenv()
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
@@ -263,8 +264,11 @@ def editp():
 
 
 @app.route("/myspace")
+@ay.protected()
 def myspace():
-    pass
+    text,aut=quotes()
+    return render_template("myspace.html",text=text,aut=aut)
+    
 
 
 

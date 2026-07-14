@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% block title %}
+    My space
+{% endblock title %}
+
+{% block head %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+
+    <style>
+    /* 1. Define Color Themes */
+    :root {
+        /* Light Mode Variables (Default) */
+        --bg-wrapper: transparent;
+        --text-header: #0f172a;       /* Deep Slate */
+        --text-accent: #6366f1;       /* Modern Indigo */
+        --card-bg: rgba(255, 255, 255, 0.75);
+        --card-border: rgba(226, 232, 240, 0.8);
+        --text-quote: #1e293b;        /* Dark Slate for Quote */
+        --quote-mark: rgba(99, 102, 241, 0.12);
+        --extra-bg: rgba(255, 255, 255, 0.4);
+        --extra-border: #e2e8f0;
+        --extra-text: #94a3b8;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            /* Dark Mode Variables */
+            --text-header: #f8fafc;   /* Crisp Off-White */
+            --text-accent: #818cf8;   /* Brighter Indigo for contrast */
+            --card-bg: rgba(30, 41, 59, 0.7); /* Translucent Charcoal Slate */
+            --card-border: rgba(51, 65, 85, 0.5);
+            --text-quote: #e2e8f0;    /* Light Gray for high contrast text */
+            --quote-mark: rgba(129, 140, 248, 0.15);
+            --extra-bg: rgba(30, 41, 59, 0.3);
+            --extra-border: #334155;
+            --extra-text: #64748b;
+        }
+    }
+
+    /* 2. Apply Dynamic Variables to Elements */
+    .myspace-wrapper {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        max-width: 850px;
+        margin: 40px auto;
+        padding: 0 24px;
+        box-sizing: border-box;
+    }
+
+    .dashboard-header {
+        font-size: 2.25rem;
+        font-weight: 800;
+        color: var(--text-header); /* Variable Color */
+        letter-spacing: -0.025em;
+        margin-bottom: 28px;
+        text-align: left;
+    }
+    
+    .dashboard-header span {
+        color: var(--text-accent); /* Variable Color */
+    }
+
+    .quote-card {
+        background: var(--card-bg); /* Variable Color */
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--card-border); /* Variable Color */
+        border-radius: 24px;
+        padding: 48px 40px;
+        text-align: center;
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04);
+        position: relative;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 32px;
+    }
+
+    .quote-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.2);
+        border-color: var(--text-accent);
+    }
+
+    .quote-card::before {
+        content: "“";
+        font-family: 'Playfair Display', serif;
+        position: absolute;
+        top: -15px;
+        left: 35px;
+        font-size: 8rem;
+        color: var(--quote-mark); /* Variable Color */
+        line-height: 1;
+        user-select: none;
+    }
+
+    .quote-text {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.85rem;
+        font-weight: 600;
+        color: var(--text-quote); /* Variable Color */
+        line-height: 1.45;
+        margin: 0 0 20px 0;
+        position: relative;
+        z-index: 1;
+    }
+
+    .quote-author {
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--text-accent); /* Variable Color */
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0;
+    }
+
+    .quote-author::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 2px;
+        background-color: var(--text-accent); /* Variable Color */
+        border-radius: 2px;
+    }
+
+    .extra-content-section {
+        background: var(--extra-bg); /* Variable Color */
+        border: 1px dashed var(--extra-border); /* Variable Color */
+        border-radius: 20px;
+        padding: 40px;
+        text-align: center;
+        color: var(--extra-text); /* Variable Color */
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+    }
+    
+    .extra-content-section:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: var(--text-accent);
+    }
+</style>
+{% endblock head %}
+
+{% block content %}
+<div class="myspace-wrapper">
+    
+    <h1 class="dashboard-header">Welcome to your space, <span>{{ current_user.name }}</span></h1>
+
+    <div class="quote-card">
+        <h1 class="quote-text">{{ text }}</h1>
+        <h2 class="quote-author">{{ aut }}</h2>
+    </div>
+
+    <div class="extra-content-section">
+        <p>Your trackers, performance metrics, and tools will appear right here.</p>
+    </div>
+
+</div>
+{% endblock content %}
