@@ -1,21 +1,8 @@
-﻿AY-loginsys @ git+https://github.com/Abheeshtyadav/AY-loginsys.git@d68dbfa2ed12f155164302e559b3a7e67dfb054b
-blinker==1.9.0
-click==8.4.2
-colorama==0.4.6
-Deprecated==1.3.1
-Flask==3.1.3
-Flask-Limiter==4.1.1
-Flask-Mail==0.10.0
-Flask-SQLAlchemy==3.1.1
-greenlet==3.5.3
-itsdangerous==2.2.0
-Jinja2==3.1.6
-limits==5.8.0
-MarkupSafe==3.0.3
-ordered-set==4.1.0
-packaging==26.2
-python-dotenv==1.2.2
-SQLAlchemy==2.0.51
-typing_extensions==4.16.0
-Werkzeug==3.1.8
-wrapt==2.2.2
+﻿Flask>=2.0.0
+Flask-SQLAlchemy>=3.0.0
+Werkzeug>=2.0.0
+psycopg2-binary>=2.9.0
+python-dotenv>=1.0.0
+AY-loginsys @ git+https://github.com/Abheeshtyadav/AY-loginsys.git@main
+
+Flask-Mail
