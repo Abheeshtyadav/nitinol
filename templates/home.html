@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+
+{% with msg = get_flashed_messages(with_categories=true) %}
+      {% if msg %}
+        <div class="flash-messages mt-3 mb-3">
+          {% for category, message in msg %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+              {{ message | safe }} <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    <div style="text-align: center; margin-top: 50px; font-family: Arial, sans-serif;">
+        <h2>Countdown to JEE Main 2027 Jan attempt</h2>
+        <h1 id="countdown" style="font-size: 3rem; color: #ff4757;">Loading countdown...</h1>
+    </div>
+
+
+
+    <script>
+        // 1. Set the target exam date (Year, Month [0-11], Day, Hour, Minute)
+        // Note: Months are 0-indexed in JS (0 = Jan, 1 = Feb, etc.)
+        // Let's set it to January 24, 2027 (Approx JEE Main Session 1)
+        const examDate = new Date(2027, 0, 24, 9, 0, 0).getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = examDate - now;
+
+            // 2. Time calculations for Days, Hours, Minutes, and Seconds
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            // 3. Display the result in the element with id="countdown"
+            if (difference > 0) {
+                document.getElementById("countdown").innerHTML = 
+                    `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            } else {
+                // Stop the countdown if the date has passed
+                clearInterval(countdownInterval);
+                document.getElementById("countdown").innerHTML = "The Exam Has Begun! All the best!!";
+            }
+        }
+
+        // 4. Run the function every 1 second (1000 milliseconds)
+        updateCountdown(); // Run immediately on load
+        const countdownInterval = setInterval(updateCountdown, 1000);
+    </script>
+{% endblock content %}

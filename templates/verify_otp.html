@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verify OTP</title>
+</head>
+<body>
+    <h2>Email Verification</h2>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div style="color: {% if category=='danger' %}red{% else %}green{% endif %};">
+              {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <p>Please type the 6-digit security verification code sent to your email address.</p>
+    <p>Make sure to check spam folder</p>
+    <p>Sender email address will be desiralabs@gmail.com</p>
+    
+    <form action="{{ url_for('verify_otp') }}" method="POST">
+        <label for="otp">Enter OTP:</label>
+        <input type="text" name="otp" id="otp" maxlength="6" required autocomplete="off">
+        <button type="submit">Verify & Register</button>
+    </form>
+</body>
+</html>
