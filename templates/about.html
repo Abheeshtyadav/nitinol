@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% block title %}About - Desira Labs{% endblock title %}
+
+{% block head %}
+<style>
+    .about-wrapper {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        max-width: 850px;
+        margin: 40px auto;
+        padding: 0 24px;
+        box-sizing: border-box;
+    }
+    .about-card {
+        background: rgba(22, 28, 36, 0.4);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(63, 79, 96, 0.3);
+        border-radius: 24px;
+        padding: 40px;
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
+    }
+    [data-bs-theme="light"] .about-card {
+        background: rgba(252, 251, 249, 0.85);
+        border-color: rgba(212, 206, 196, 0.6);
+        box-shadow: 0 10px 30px -10px rgba(130, 120, 110, 0.1);
+    }
+    
+    .text-gradient {
+        background: linear-gradient(135deg, #e05a36 0%, #0e7490 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .custom-badge {
+        background-color: rgba(224, 90, 54, 0.15);
+        color: #e05a36;
+        border: 1px solid rgba(224, 90, 54, 0.3);
+    }
+    .spec-label {
+        font-weight: 700;
+        color: #0e7490;
+        display: inline-block;
+        width: 100px;
+    }
+    [data-bs-theme="dark"] .spec-label {
+        color: #22d3ee;
+    }
+    .btn-reddit {
+        border-color: rgba(224, 90, 54, 0.5);
+        color: var(--bs-body-color);
+    }
+    .btn-reddit:hover {
+        background-color: #e05a36;
+        border-color: #e05a36;
+        color: #fff;
+    }
+</style>
+{% endblock head %}
+
+{% block content %}
+<div class="container about-wrapper py-4">
+    <div class="about-card">
+        
+        <div class="text-center mb-5">
+            <span class="badge custom-badge px-3 py-2 rounded-pill fw-bold mb-2">THE TRUE INTENT</span>
+            <h1 class="fw-bold tracking-tight display-5 mb-3">About <span class="text-gradient">Desira Labs</span></h1>
+            <p class="lead text-secondary mx-auto" style="max-width: 650px;">
+                Building software to bridge gaps and bring people closer. No corporate bloat,no useless ai-slop that slows site down, no artificial filler.
+            </p>
+        </div>
+
+        <div class="mb-4 pb-3 border-bottom border-secondary-subtle">
+            <h2 class="h4 fw-bold mb-3 d-flex align-items-center" style="color: #e05a36;">
+                <i class="bi bi-tools me-2"></i> Why I Built This
+            </h2>
+            <p class="text-body-secondary lh-lg">
+                Honestly? I built this just because I felt like it. I was tired of watching basic student utility apps get loaded up with premium tier locks, buried under annoying advertisements, or cluttered with useless features that nobody asked for. 
+            </p>
+            <p class="text-body-secondary lh-lg">
+                <strong>Nitinol</strong> exists to cut right through that noise. It's a clean, incredibly fast workspace built out of pure curiosity and frustration, designed specifically to help students get their tasks done efficiently without getting tracked or nickel-and-dimed.
+            </p>
+        </div>
+
+        <div class="mb-4 pb-3 border-bottom border-secondary-subtle">
+            <h2 class="h4 fw-bold mb-3 d-flex align-items-center" style="color: #0e7490;">
+                <i class="bi bi-people-fill me-2"></i> The Big Picture Mission
+            </h2>
+            <p class="text-body-secondary lh-lg">
+                At the end of the day, Desira Labs isn't just about checklists. My long-term mission is to craft digital products that actually **bring people closer together**—tools that ease student communication, simplify peer cooperation, and remove the digital barriers that keep us isolated behind our screens. 
+            </p>
+        </div>
+
+        <div class="mb-4 pb-3 border-bottom border-secondary-subtle">
+            <h2 class="h4 fw-bold mb-3 d-flex align-items-center text-body">
+                <i class="bi bi-unlock me-2"></i> Open Source Framework & Transparency
+            </h2>
+            <p class="text-body-secondary lh-lg">
+                Everything here runs transparently. The code is open, completely clear of monetization scripts, and optimized to prioritize speed above all else. Your study logs, tracking history, and custom formula annotations are private and live right where they belong.
+            </p>
+            <a href="https://github.com/Abheeshtyadav/nitinol">Github repo</a>
+        </div>
+
+        <div class="mb-4 pb-3 border-bottom border-secondary-subtle">
+            <h2 class="h4 fw-bold mb-3 d-flex align-items-center text-body">
+                <i class="bi bi-terminal me-2"></i> Technical Specifications
+            </h2>
+            <div class="bg-body-tertiary p-3 rounded-3 font-monospace small border border-secondary-subtle">
+                <div class="mb-1"><span class="spec-label">Backend:</span> Python / Flask Engine</div>
+                <div class="mb-1"><span class="spec-label">Frontend:</span> Bootstrap Framework / Some elements taken from uiverse.io</div>
+                <div class="mb-1"><span class="spec-label">Database:</span> Neon Serverless PostgreSQL</div>
+                <div><span class="spec-label">Hosting:</span> Vercel Cloud Nodes</div>
+            </div>
+        </div>
+
+        <div class="text-center pt-3">
+            <h2 class="h5 fw-bold mb-3">Get in Touch</h2>
+            <p class="text-secondary small mb-4">Have an expansion layout request, bug submission, or just want to pitch an application idea?</p>
+            
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="https://www.reddit.com/user/Dense_League7010/" target="_blank" class="btn btn-reddit px-4 py-2 rounded-3 fw-semibold shadow-sm text-decoration-none">
+                    <i class="bi bi-reddit me-2"></i> Reddit (u/Dense_League7010)
+                </a>
+                
+                <a href="https://www.instagram.com/desiralabs" target="_blank" class="btn px-4 py-2 rounded-3 fw-semibold shadow-sm text-decoration-none text-white border-0" style="background-color: #e05a36;">
+                    <i class="bi bi-instagram me-2"></i> Follow @desiralabs
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock content %}

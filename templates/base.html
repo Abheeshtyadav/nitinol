@@ -29,6 +29,7 @@
           <ul class="navbar-nav ms-auto"> <li class="nav-item">
               <a class="nav-link fw-semibold" href="/">Home</a>
             </li>
+
             {% if current_user %}
               <li class="nav-item">
                 <a class="nav-link fw-semibold" href="/myspace">My space</a>
@@ -36,6 +37,9 @@
               <li class="nav-item">
                 <a class="nav-link fw-semibold" href="/profile">Profile</a>
               </li>
+              <li class="nav-item">
+              <a class="nav-link fw-semibold" href="/aboutsite">About Site</a>
+            </li>
               <li class="nav-item">
                 <a class="nav-link fw-semibold text-danger-emphasis" href="/logout">Logout</a>
               </li>
@@ -46,7 +50,11 @@
               <li class="nav-item">
                 <a class="nav-link fw-semibold" href="/reg">Sign Up</a>
               </li>
+              <li class="nav-item">
+              <a class="nav-link fw-semibold" href="/aboutsite">About Site</a>
+            </li>
             {% endif %}
+            
           </ul>
         </div>
       </div>
@@ -79,7 +87,7 @@
     </footer>
 
     <style>
-      /* Extra subtle granular text optimizations */
+      
       .x-small {
         font-size: 0.8rem;
       }

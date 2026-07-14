@@ -377,5 +377,9 @@ def update_progress():
 
     return redirect('/tracker')
 
+@app.route("/aboutsite")
+def about():
+    return render_template("about.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
