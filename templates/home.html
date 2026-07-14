@@ -24,25 +24,25 @@
         <div class="col-12 col-md-10 col-lg-8">
             
             {% if current_user %}
-                <!-- Logged In Dashboard State -->
+                
                 <div class="card shadow-sm border border-secondary-subtle bg-body-tertiary p-4 p-md-5 rounded-4 text-center">
                     <div class="card-body">
-                        <!-- Welcome Badge / Accent -->
+                        
                         <span class="badge bg-primary-subtle text-primary fw-semibold px-3 py-2 rounded-pill mb-3 text-uppercase tracking-wider small">
                             Welcome Back
                         </span>
                         
-                        <!-- Main Greeting -->
+                       
                         <h1 class="display-5 fw-bold text-body mb-3">
                             Hello, <span class="text-primary">{{ current_user.name }}</span>!
                         </h1>
                         
-                        <!-- Subtitle text -->
+                        
                         <p class="text-secondary fs-5 mb-4 mx-auto style-desc" style="max-width: 500px;">
                             Visit your personal workspace to manage your notes and track your preparation syllabus.
                         </p>
                         
-                        <!-- Call to Action Button -->
+                        
                         <div class="d-grid d-sm-inline-block gap-2">
                             <a href="/myspace" class="btn btn-primary btn-lg fw-semibold px-4 py-2 rounded-3 shadow-sm">
                                 <i class="bi bi-rocket-takeoff me-2"></i> Go to My Space
@@ -52,7 +52,7 @@
                 </div>
 
             {% else %}
-                <!-- Logged Out / Welcome State -->
+                
                 <div class="card shadow-sm border border-secondary-subtle bg-body-tertiary p-4 p-md-5 rounded-4 text-center">
                     <div class="card-body py-4">
                         <div class="mb-3 text-secondary">
@@ -80,34 +80,32 @@
 
 
     <script>
-        // 1. Set the target exam date (Year, Month [0-11], Day, Hour, Minute)
-        // Note: Months are 0-indexed in JS (0 = Jan, 1 = Feb, etc.)
-        // Let's set it to January 24, 2027 (Approx JEE Main Session 1)
+       
         const examDate = new Date(2027, 0, 24, 9, 0, 0).getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();
             const difference = examDate - now;
 
-            // 2. Time calculations for Days, Hours, Minutes, and Seconds
+           
             const days = Math.floor(difference / (1000 * 60 * 60 * 24));
             const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-            // 3. Display the result in the element with id="countdown"
+            
             if (difference > 0) {
                 document.getElementById("countdown").innerHTML = 
                     `${days}d ${hours}h ${minutes}m ${seconds}s`;
             } else {
-                // Stop the countdown if the date has passed
+                
                 clearInterval(countdownInterval);
                 document.getElementById("countdown").innerHTML = "The Exam Has Begun! All the best!!";
             }
         }
 
-        // 4. Run the function every 1 second (1000 milliseconds)
-        updateCountdown(); // Run immediately on load
+        
+        updateCountdown(); 
         const countdownInterval = setInterval(updateCountdown, 1000);
     </script>
 {% endblock content %}

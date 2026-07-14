@@ -6,7 +6,7 @@
     
     <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-5 gap-3">
         <div>
-            <h1 class="fw-bold text-body mb-1 tracking-tight">🎯 RankVelocity Dashboard</h1>
+            <h1 class="fw-bold text-body mb-1 tracking-tight">Nitinol Tracker</h1>
             <p class="text-secondary small mb-0">Manage your JEE preparation syllabus, tracking logs, and analytical triggers.</p>
         </div>
         <a href="/myspace" class="btn btn-outline-secondary btn-sm rounded-3 shadow-sm px-4 py-2 fw-semibold backend-nav-btn">
@@ -88,7 +88,11 @@
                                         <div class="col-12 mt-2 pt-2 border-top border-light-subtle">
                                             <div class="d-flex align-items-start gap-2">
                                                 <span class="text-secondary small mt-1"><i class="bi bi-sticky me-1"></i></span>
-                                                <input type="text" class="form-control form-control-sm bg-body-tertiary text-body border-0 border-bottom border-transparent rounded-0 px-1 py-1 text-notes-field w-100" name="notes" value="{{ user_notes }}" placeholder="Write major key formulas, difficult reaction links, weak revision triggers here...">
+                                                <textarea class="form-control form-control-sm bg-body-tertiary text-body border-0 border-bottom border-transparent rounded-3 px-2 py-1 text-notes-field w-100" 
+                                                          name="notes" 
+                                                          rows="1" 
+                                                          placeholder="Write major key formulas,Yt video resource, difficult reaction links, weak revision triggers here..."
+                                                          style="resize: none; overflow-y: hidden;">{{ user_notes }}</textarea>
                                             </div>
                                         </div>
 
@@ -107,7 +111,7 @@
 </div>
 
 <style>
-    /* Premium Shadows & Transitions */
+ 
     .shadow-xs {
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     }
@@ -122,7 +126,7 @@
         border-color: var(--bs-secondary-subtle) !important;
     }
     
-    /* Finished Content State Shifts */
+
     .topic-completed {
         background-color: var(--bs-light-bg-subtle) !important;
         border-color: var(--bs-success-border-subtle) !important;
@@ -134,17 +138,22 @@
         color: var(--bs-secondary-color) !important;
     }
 
-    /* Custom Input Configurations */
+ 
     .text-notes-field {
-        transition: all 0.2s ease;
+        transition: min-height 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
         font-size: 0.87rem;
+        min-height: 31px;
     }
     
+    
     .text-notes-field:focus {
-        background-color: transparent !important;
+        background-color: var(--bs-body-bg) !important;
         outline: none;
-        box-shadow: none;
-        border-color: var(--bs-primary-border-subtle) !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        border: 1px solid var(--bs-border-color-translucent) !important;
+        min-height: 80px; 
+        overflow-y: auto !important;
+        resize: vertical; 
     }
     
     .custom-check-btn {
@@ -161,4 +170,25 @@
         border-color: currentColor !important;
     }
 </style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const noteFields = document.querySelectorAll('.text-notes-field');
+    
+    noteFields.forEach(field => {
+        
+        if (field.value.trim().length > 0) {
+            field.style.minHeight = "60px";
+        }
+
+        
+        field.addEventListener('blur', function() {
+            if (this.value.trim().length === 0) {
+                this.style.minHeight = "31px";
+                this.style.resize = "none";
+            }
+        });
+    });
+});
+</script>
 {% endblock content %}
