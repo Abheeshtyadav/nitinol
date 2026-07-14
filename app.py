@@ -268,6 +268,22 @@ def editp():
 def myspace():
     text,aut=quotes()
     return render_template("myspace.html",text=text,aut=aut)
+
+
+@app.route("/maths")
+@ay.protected()
+def maths():
+    return render_template("smaths.html")
+
+@app.route("/chem")
+@ay.protected()
+def chem():
+    return render_template("schem.html")
+
+@app.route("/phy")
+@ay.protected()
+def phy():
+    return render_template("sphy.html")
     
 
 
