@@ -1,4 +1,4 @@
-import requests
+
 import random
 import json
 """ key="https://zenquotes.io/api/random"
