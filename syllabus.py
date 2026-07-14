@@ -1,4 +1,4 @@
-# syllabus.py
+
 
 JEE_SYLLABUS = {
     "Physics": {

@@ -281,7 +281,7 @@ def myspace():
     
     
     stats = {
-        "Physics": {"solved": 0, "total_topics": 15, "done": 0},      
+        "Physics": {"solved": 0, "total_topics": 17, "done": 0},      
         "Chemistry": {"solved": 0, "total_topics": 17, "done": 0},
         "Mathematics": {"solved": 0, "total_topics": 16, "done": 0}
     }
