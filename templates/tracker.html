@@ -56,7 +56,7 @@
                             {% set is_checked = is_done and progress[topic.id]['completed'] %}
                             
                             <div class="card bg-body border border-secondary-subtle rounded-3 shadow-xs p-3 topic-row-card {% if is_checked %}topic-completed{% endif %}">
-                                <form action="/update-progress" method="POST" class="m-0">
+                                <form action="/update-progress" method="POST" class="m-0 tracker-form">
                                     <input type="hidden" name="topic_id" value="{{ topic.id }}">
                                     
                                     {% if csrf_token %}
@@ -80,8 +80,10 @@
                                                 <input type="number" class="form-control bg-body border-secondary-subtle text-center font-monospace fw-bold" name="questions_solved" value="{{ q_count }}" min="0" placeholder="0">
                                             </div>
                                             
-                                            <button type="submit" class="btn btn-sm btn-{{ sub_color }} fw-semibold px-4 py-2 rounded-3 shadow-xs text-white btn-action-save">
-                                                Save
+                                            
+                                            <button type="submit" class="btn btn-sm btn-{{ sub_color }} fw-semibold px-4 py-2 rounded-3 shadow-xs text-white btn-action-save d-inline-flex align-items-center justify-content-center" style="min-width: 78px;">
+                                                <span class="btn-text">Save</span>
+                                                <div class="spinner-border spinner-border-sm d-none" role="status" style="width: 1rem; height: 1rem;"></div>
                                             </button>
                                         </div>
                                         
@@ -111,7 +113,6 @@
 </div>
 
 <style>
- 
     .shadow-xs {
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     }
@@ -126,7 +127,6 @@
         border-color: var(--bs-secondary-subtle) !important;
     }
     
-
     .topic-completed {
         background-color: var(--bs-light-bg-subtle) !important;
         border-color: var(--bs-success-border-subtle) !important;
@@ -138,13 +138,11 @@
         color: var(--bs-secondary-color) !important;
     }
 
- 
     .text-notes-field {
         transition: min-height 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
         font-size: 0.87rem;
         min-height: 31px;
     }
-    
     
     .text-notes-field:focus {
         background-color: var(--bs-body-bg) !important;
@@ -176,17 +174,32 @@ document.addEventListener("DOMContentLoaded", function() {
     const noteFields = document.querySelectorAll('.text-notes-field');
     
     noteFields.forEach(field => {
-        
         if (field.value.trim().length > 0) {
             field.style.minHeight = "60px";
         }
 
-        
         field.addEventListener('blur', function() {
             if (this.value.trim().length === 0) {
                 this.style.minHeight = "31px";
                 this.style.resize = "none";
             }
+        });
+    });
+
+    
+    const forms = document.querySelectorAll('.tracker-form');
+    forms.forEach(form => {
+        form.addEventListener('submit', function() {
+            const submitBtn = this.querySelector('.btn-action-save');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const spinner = submitBtn.querySelector('.spinner-border');
+            
+            
+            btnText.classList.add('d-none');
+            spinner.classList.remove('d-none');
+            
+            
+            submitBtn.setAttribute('disabled', 'true');
         });
     });
 });
